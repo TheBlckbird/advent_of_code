@@ -1,0 +1,76 @@
+{
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug DayThree (3rd Day)",
+            "program": "${workspaceFolder:2015}/3rd Day/.build/debug/DayThree",
+            "args": [],
+            "cwd": "${workspaceFolder:2015}/3rd Day",
+            "preLaunchTask": "swift: Build Debug DayThree (3rd Day)"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Release DayThree (3rd Day)",
+            "program": "${workspaceFolder:2015}/3rd Day/.build/release/DayThree",
+            "args": [],
+            "cwd": "${workspaceFolder:2015}/3rd Day",
+            "preLaunchTask": "swift: Build Release DayThree (3rd Day)"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug DayFour (4th day)",
+            "program": "${workspaceFolder:2015}/4th day/.build/debug/DayFour",
+            "args": [],
+            "cwd": "${workspaceFolder:2015}/4th day",
+            "preLaunchTask": "swift: Build Debug DayFour (4th day)"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Release DayFour (4th day)",
+            "program": "${workspaceFolder:2015}/4th day/.build/release/DayFour",
+            "args": [],
+            "cwd": "${workspaceFolder:2015}/4th day",
+            "preLaunchTask": "swift: Build Release DayFour (4th day)"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug DayFive (5th day)",
+            "program": "${workspaceFolder:2015}/5th day/.build/debug/DayFive",
+            "args": [],
+            "cwd": "${workspaceFolder:2015}/5th day",
+            "preLaunchTask": "swift: Build Debug DayFive (5th day)"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Release DayFive (5th day)",
+            "program": "${workspaceFolder:2015}/5th day/.build/release/DayFive",
+            "args": [],
+            "cwd": "${workspaceFolder:2015}/5th day",
+            "preLaunchTask": "swift: Build Release DayFive (5th day)"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug DaySix (6th day)",
+            "program": "${workspaceFolder:2015}/6th day/.build/debug/DaySix",
+            "args": [],
+            "cwd": "${workspaceFolder:2015}/6th day",
+            "preLaunchTask": "swift: Build Debug DaySix (6th day)"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Release DaySix (6th day)",
+            "program": "${workspaceFolder:2015}/6th day/.build/release/DaySix",
+            "args": [],
+            "cwd": "${workspaceFolder:2015}/6th day",
+            "preLaunchTask": "swift: Build Release DaySix (6th day)"
+        }
+    ]
+}
