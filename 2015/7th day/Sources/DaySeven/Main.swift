@@ -18,14 +18,17 @@ struct Instruction {
 class Main {
     init() {
         var lights: [[Bool]] = [[Bool]](repeating: [Bool](repeating: false, count: 1000), count: 1000)
+        var lightsBrightness: [[Int]] = [[Int]](repeating: [Int](repeating: 0, count: 1000), count: 1000)
         
         let instructions: [Instruction] = self.parseInput(input: PuzzleInput().input)
 
         for instruction: Instruction in instructions {
             lights = self.changeLights(lights: lights, instruction: instruction)
+            lightsBrightness = self.changeLightsBrightness(lightsBrightness: lightsBrightness, instruction: instruction)
         }
 
         var lightsOn: Int = 0
+        var totalBrightness: Int = 0
 
         for lightRow: [Bool] in lights {
             for light: Bool in lightRow {
@@ -33,7 +36,14 @@ class Main {
             }
         }
 
+        for lightRow: [Int] in lightsBrightness {
+            for light: Int in lightRow {
+                totalBrightness += light
+            }
+        }
+
         print("Part 1: \(lightsOn)")
+        print("Part 2: \(totalBrightness)")
     }
 
     func changeLights(lights: [[Bool]], instruction: Instruction) -> [[Bool]] {
@@ -55,6 +65,35 @@ class Main {
 
                 case .toggle:
                     lightsChanged[y][x].toggle()
+                    // print("togggle")
+
+                }
+                
+            }
+        }
+
+        return lightsChanged
+    }
+
+    func changeLightsBrightness(lightsBrightness: [[Int]], instruction: Instruction) -> [[Int]] {
+        var lightsChanged: [[Int]] = lightsBrightness
+
+        for y: Int in instruction.startPoint.y...instruction.endPoint.y {
+            // print(y)
+            for x: Int in instruction.startPoint.x...instruction.endPoint.x {
+                // print(instruction.action)
+                switch instruction.action {
+                    
+                case .off:
+                    lightsChanged[y][x] -= lightsChanged[y][x] > 0 ? 1 : 0
+                    // print("off")
+
+                case .on:
+                    lightsChanged[y][x] += 1
+                    // print("on")
+
+                case .toggle:
+                    lightsChanged[y][x] += 2
                     // print("togggle")
 
                 }
