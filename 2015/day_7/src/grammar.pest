@@ -1,0 +1,11 @@
+file = _{ SOI ~ line* ~ EOI }
+line =  { instruction ~ "->" ~ target ~ NEWLINE }
+
+instruction = { ((wire | number)? ~ action)? ~ (wire | number) }
+target      = { wire }
+
+wire   = { ASCII_ALPHA_LOWER+ }
+action = { ASCII_ALPHA_UPPER+ }
+number = { ASCII_DIGIT+ }
+
+WHITESPACE = _{ " " }
