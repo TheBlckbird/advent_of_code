@@ -46,16 +46,16 @@ public struct Fourteen {
             sandPosition = this.sandFall(coordinateSystemStuff: coordinateSystemStuff2, part2: true)
 
             coordinateSystemStuff2.coordinateSystem[sandPosition.y][sandPosition.x] = "o"
-            // this.showCoordinateSystem(coordinateSystemStuff: coordinateSystemStuff)
+            this.showCoordinateSystem(coordinateSystemStuff: coordinateSystemStuff)
 
             totalSand += 1
-            print("Part 2: \(totalSand + 1)")
             // if sandPosition.y >= coordinateSystemStuff.coordinateSystem.count - 1 {
             //     print("Part 1: \(totalSand)")
             //     break
             // }
         }
 
+            print("Part 2: \(totalSand + 1)")
         this.showCoordinateSystem(coordinateSystemStuff: coordinateSystemStuff)
     }
 
