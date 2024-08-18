@@ -15,7 +15,7 @@ fn calc(input_type: InputType) -> (usize, usize) {
     let mut encoded_chars = 0;
 
     for line in parse_input(input_type) {
-        if line == "" {
+        if line.is_empty() {
             continue;
         }
 
