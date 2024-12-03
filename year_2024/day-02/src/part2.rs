@@ -2,7 +2,7 @@ pub fn process(input: &str) -> String {
     let mut result = 0;
     let reports = parse(input);
 
-    'reports: for report in reports {
+    for report in reports {
         if check_safety(&report) {
             result += 1;
         } else {
