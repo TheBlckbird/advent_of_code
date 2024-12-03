@@ -10,7 +10,7 @@ mod tests {
     #[test]
     fn test_process() {
         let result = process(include_str!("../test_input1.txt"));
-        let expected = todo!() as String;
+        let expected = todo!().to_string();
         assert_eq!(result, expected);
     }
 }
