@@ -1,3 +1,3 @@
 #!/bin/sh
 
-cargo generate --path ./day_tpl
+cargo generate --path ./tpl-day

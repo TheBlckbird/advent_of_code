@@ -1,0 +1,200 @@
+#[derive(Debug)]
+struct XHeader {
+    x_header_type: XHeaderType,
+    x: usize,
+    y: usize,
+}
+
+impl XHeader {
+    fn new(x_header_type: XHeaderType, x: usize, y: usize) -> Self {
+        Self {
+            x_header_type,
+            x,
+            y,
+        }
+    }
+}
+
+#[derive(Debug)]
+enum XHeaderType {
+    SxS,
+    SxM,
+    MxS,
+    MxM,
+}
+
+impl XHeaderType {
+    pub fn get_counterpart(&self) -> Self {
+        match self {
+            XHeaderType::SxS => XHeaderType::MxM,
+            XHeaderType::SxM => XHeaderType::MxS,
+            XHeaderType::MxS => XHeaderType::SxM,
+            XHeaderType::MxM => XHeaderType::SxS,
+        }
+    }
+}
+
+pub fn process(input: &str) -> String {
+    let word_grid: Vec<Vec<char>> = input.lines().map(|i| i.chars().collect()).collect();
+    let stringified = grid_to_string(&word_grid);
+
+    // let headers = count_xmas(&word_grid);
+
+    // println!("{headers:#?}");
+
+    // for header in headers {
+    //     if header.y >= word_grid.len() - 2 {
+    //         continue;
+    //     }
+
+    //     println!("{header:#?}");
+
+    //     if word_grid[header.y + 1][header.x] == 'A' {
+    //         if match header.x_header_type {
+    //             XHeaderType::SxS => {
+    //                 word_grid[header.y + 2][header.x - 1] == 'M'
+    //                     && word_grid[header.y + 2][header.x + 1] == 'M'
+    //             }
+    //             XHeaderType::SxM => {
+    //                 word_grid[header.y + 2][header.x - 1] == 'S'
+    //                     && word_grid[header.y + 2][header.x + 1] == 'M'
+    //             }
+    //             XHeaderType::MxS => {
+    //                 word_grid[header.y + 2][header.x - 1] == 'M'
+    //                     && word_grid[header.y + 2][header.x + 1] == 'S'
+    //             }
+    //             XHeaderType::MxM => {
+    //                 word_grid[header.y + 2][header.x - 1] == 'S'
+    //                     && word_grid[header.y + 2][header.x + 1] == 'S'
+    //             }
+    //         } {
+    //             result += 1;
+    //         }
+    //     }
+    // }
+}
+
+
+fn count_xmas(word_grid: &Vec<Vec<char>>) -> Vec<usize> {
+    let stringified = grid_to_string(word_grid);
+
+    let mut indices: Vec<usize> = stringified
+        .match_indices("MAS")
+        .map(|item| item.0 + 1)
+        .collect();
+    indices.extend(stringified.match_indices("SAM").map(|item| item.0 + 1));
+
+    indices
+
+    // let mut süm: Vec<usize> = stringified
+    //     .match_indices("SXM")
+    //     .map(|item| item.0)
+    //     .collect();
+
+    // süm.extend(stringified.match_indices("SMM").map(|item| item.0));
+    // süm.extend(stringified.match_indices("SAM").map(|item| item.0));
+    // süm.extend(stringified.match_indices("SSM").map(|item| item.0));
+
+    // for item in süm {
+    //     result.push(XHeader::new(
+    //         XHeaderType::SxM,
+    //         item % word_grid.len(),
+    //         item / word_grid.len(),
+    //     ));
+    // }
+
+    // ////////////////////////
+
+    // let mut müs: Vec<usize> = stringified
+    //     .match_indices("MXS")
+    //     .map(|item| item.0)
+    //     .collect();
+
+    // müs.extend(stringified.match_indices("MMS").map(|item| item.0));
+    // müs.extend(stringified.match_indices("MAS").map(|item| item.0));
+    // müs.extend(stringified.match_indices("MSS").map(|item| item.0));
+
+    // for item in müs {
+    //     result.push(XHeader::new(
+    //         XHeaderType::MxS,
+    //         item % word_grid.len(),
+    //         item / word_grid.len(),
+    //     ));
+    // }
+
+    // ////////////////////////
+
+    // let mut müm: Vec<usize> = stringified
+    //     .match_indices("MXM")
+    //     .map(|item| item.0)
+    //     .collect();
+
+    // müm.extend(stringified.match_indices("MMM").map(|item| item.0));
+    // müm.extend(stringified.match_indices("MAM").map(|item| item.0));
+    // müm.extend(stringified.match_indices("MSM").map(|item| item.0));
+
+    // for item in müm {
+    //     result.push(XHeader::new(
+    //         XHeaderType::MxM,
+    //         item % word_grid.len(),
+    //         item / word_grid.len(),
+    //     ));
+    // }
+
+    // ////////////////////////
+
+    // let mut süs: Vec<usize> = stringified
+    //     .match_indices("SXS")
+    //     .map(|item| item.0)
+    //     .collect();
+
+    // süs.extend(stringified.match_indices("SMS").map(|item| item.0));
+    // süs.extend(stringified.match_indices("SAS").map(|item| item.0));
+    // süs.extend(stringified.match_indices("SSS").map(|item| item.0));
+
+    // for item in süs {
+    //     result.push(XHeader::new(
+    //         XHeaderType::SxS,
+    //         item % word_grid.len(),
+    //         item / word_grid.len(),
+    //     ));
+    // }
+}
+
+
+
+// later
+
+// count_xmas(&word_grid);
+
+    // let rotated_clockwise = rotate_45_cw(&word_grid);
+    // let clockwise_indices = count_xmas(&rotated_clockwise);
+
+    // let rotated_counter_clockwise = rotate_45_ccw(&word_grid);
+    // let counter_clockwise_indices = count_xmas(&rotated_counter_clockwise);
+
+    // let mut clockwise_positions: Vec<(usize, usize)> = Vec::new();
+
+    // for mut index in clockwise_indices {
+    //     // println!("{index}");
+
+    //     let x: usize;
+    //     let y: usize;
+
+    //     // if index >= 100 {
+    //     index = 10;
+
+    //     // y = index % rotated_clockwise[0].len() - index % rotated_clockwise[0].len();
+    //     // x = index / rotated_clockwise[0].len();
+    //     // } else {
+
+    //     y = index % rotated_clockwise[0].len();
+    //     x = index / rotated_clockwise[0].len();
+    //     // }
+
+    //     println!("{}", rotated_counter_clockwise[y][x]);
+
+    //     clockwise_positions.push((x, y));
+    // }
+
+    // println!("{clockwise_positions:#?}");
