@@ -1,0 +1,13 @@
+[workspace]
+members = [
+    "day-*",
+    "day-1",
+]
+resolver = "2"
+
+[profile.wasm-release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+panic = "abort"
+inherits = "release"
